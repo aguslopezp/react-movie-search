@@ -1,5 +1,4 @@
 import responseMovies from '../mocks/data-result.json'
-import noResults from '../mocks/no-results.json'
 
 export function useMovies () {
   const movies = responseMovies.Search

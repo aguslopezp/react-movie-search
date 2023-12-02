@@ -1,9 +1,23 @@
-function ListOfMovies({ movies }) {
+/* eslint-disable react/prop-types */
+export function Movies ({ movies }) {
+  const hasMovies = movies?.length > 0
   return (
-    <ul>
+    hasMovies 
+            ? (
+              <ListOfMovies movies={movies} />
+            )
+            : (
+              <NoResults />
+            )
+  )
+}
+
+const ListOfMovies = ({ movies }) => {
+  return (
+    <ul className="movies">
       {
         movies.map(movie => (
-          <li key={movie.id}>
+          <li className="movie" key={movie.id}>
             <img src={movie.poster} alt={movie.Title} />
             <h3>{movie.title}</h3>
             <p>{movie.year}</p>
@@ -16,19 +30,6 @@ function ListOfMovies({ movies }) {
 
 function NoResults() {
   return (
-    <p>No results</p>
-  )
-}
-
-export function Movies({ movies }) {
-  const hasMovies = movies?.length > 0
-  return (
-    hasMovies 
-            ? (
-              <ListOfMovies movies={movies} />
-            )
-            : (
-              <NoResults />
-            )
+    <p>No results for your search</p>
   )
 }
